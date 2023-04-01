@@ -18,6 +18,7 @@ class Solution:
             if root is None:
                 return [True, 0]
             leftheight, rightheight = results(root.left), results(root.right)
+            print(leftheight, rightheight)
             check = (leftheight[0] and rightheight[0] and abs(leftheight[1]-rightheight[1] <= 1))
             print(check)
             return [check, 1 + max(leftheight[1], rightheight[1])]
