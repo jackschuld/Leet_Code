@@ -7,17 +7,15 @@
 # @lc code=start
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        largestReturn = 0
-        for i in range(len(prices)):
-            for j in prices[i:]:
-                if j - prices[i] > largestReturn:
-                    print("Larger Return:\n")
-                    print(j)
-                    print(prices[i])
-                    largestReturn = j - prices[i]
-        if largestReturn > 0:
-            return largestReturn
-        return 0
+        cheapestPrice = float("inf")
+        maxReturnProfit = 0
+        for price in prices:
+            if price > cheapestPrice:
+                if price - cheapestPrice > maxReturnProfit:
+                    maxReturnProfit = price - cheapestPrice
+            else:
+                cheapestPrice = price
+        return maxReturnProfit
         
 # @lc code=end
 
