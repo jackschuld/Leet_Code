@@ -8,12 +8,11 @@
 class Solution:
     def convertToTitle(self, columnNumber: int) -> str:
         columnLetters = ""
-        length = (columnNumber / 26) + 1
-        while len(columnLetters) != length :
-            tempNum = (columnNumber % 26) - 1 
-            columnLetters += chr(tempNum + 64)
-            columnNumber -= 26
-        return columnLetters
-
+        while columnNumber > 0:
+            columnNumber -= 1
+            columnLetters += chr((columnNumber % 26) + 65)
+            columnNumber //= 26
+        return columnLetters[::-1]
+    
 # @lc code=end
 

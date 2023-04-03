@@ -14,7 +14,7 @@ class Solution:
                     cashRegister.pop(cashRegister.index(5))
                     cashRegister.pop(cashRegister.index(10))
                 elif cashRegister.count(5) > 2:
-                    for pop in 3:
+                    for pop in range(3):
                         cashRegister.pop(cashRegister.index(5))
                 else:
                     return False
