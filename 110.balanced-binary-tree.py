@@ -13,17 +13,29 @@
 #         self.right = right
 class Solution:
     def isBalanced(self, root: Optional[TreeNode]) -> bool:
-        def results(root):
 
-            if root is None:
-                return [True, 0]
-            leftheight, rightheight = results(root.left), results(root.right)
-            print(leftheight, rightheight)
-            check = (leftheight[0] and rightheight[0] and abs(leftheight[1]-rightheight[1] <= 1))
-            print(check)
-            return [check, 1 + max(leftheight[1], rightheight[1])]
-        return results(root)[0]
+        if root is None:
+            return True
+
+        def checkHeight(root):
+            if root == None:
+                return 0
+            return 1 + max(checkHeight(root.left), checkHeight(root.right))
         
+        comp = abs(checkHeight(root.left) - checkHeight(root.right))
+        if comp > 1:
+            return False
+        
+        leftside = self.isBalanced(root.left)
+        rightside = self.isBalanced(root.right)
+
+        if leftside and rightside:
+            return True
+        return False
+
+            
+
+            
         
         
 
